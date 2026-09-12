@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 14,
-  "versionName": "0.6.8-preview",
+  "versionCode": 15,
+  "versionName": "0.6.9-preview",
   "minSdk": 33,
   "size": 127715,
-  "sha256": "a54f9360aacad9dbc7c13ff24cf92d2ea40ddf1f651ff2006dc0d57cb5b2116a",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.8-preview/ZazaReader-0.6.8-preview.apk",
-  "notes": "Упрощены меню и настройки хранения. Исправлены возвраты между экранами, сохранение страницы при удалении, начало чтения без прогресса и ручное разрешение конфликтов."
+  "sha256": "5f1b50997b5a3315a5e0f186f5daca4884740972fbe859984ca03dcf1bd25a54",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.9-preview/ZazaReader-0.6.9-preview.apk",
+  "notes": "Исправлены постоянное обновление библиотеки и сброс прокрутки при синхронизации. Сохраняются позиция списка, поиск и текущая страница; обновление карточек откладывается до окончания прокрутки."
 }
