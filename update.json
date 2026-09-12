@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 12,
-  "versionName": "0.6.6-preview",
+  "versionCode": 13,
+  "versionName": "0.6.7-preview",
   "minSdk": 33,
-  "size": 111331,
-  "sha256": "23dd3fe26355ba9b3399078660112e2f635494dd1277e6cd4fa8d596d73452de",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.6-preview/ZazaReader-0.6.6-preview.apk",
-  "notes": "Исправлены импорт и отображение прогресса чтения с сайта; продолжение без скачанной главы; подсчёт глав без повторных ссылок. Локальный прогресс сохранён."
+  "size": 123619,
+  "sha256": "a4a68bed948c7625a77945e8df06e8c8553bdfde429058634581e64366522866",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.7-preview/ZazaReader-0.6.7-preview.apk",
+  "notes": "Выбор папки скачивания, CBZ для новых и скачанных глав, режим только Wi-Fi. Автоудаление прочитанного с сохранением текущей и последней прочитанной главы. Счётчики и очистка учитывают закладку с сайта; история и прогресс сохраняются."
 }
