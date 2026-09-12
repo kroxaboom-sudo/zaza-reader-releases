@@ -3,7 +3,7 @@
   "packageName": "me.zaza.reader",
   "versionCode": 16,
   "versionName": "0.6.10-preview",
-  "minSdk": 33,
+  "minSdk": 28,
   "size": 135907,
   "sha256": "904c70366c8d8bda302ab0d52e9ee928a5363248df493e4bd856a76bdaa39c2b",
   "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.10-preview/ZazaReader-0.6.10-preview.apk",
