@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "packageName": "me.zaza.reader",
+  "versionCode": 11,
+  "versionName": "0.6.5-preview",
+  "minSdk": 33,
+  "size": 111331,
+  "sha256": "5bfb8803bfe426bba4fd1640ecd319f95410d70afacc613e928cc357f7576662",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.5-preview/ZazaReader-0.6.5-preview.apk",
+  "notes": "Добавлено обновление приложения через GitHub: ручная и фоновая проверка, загрузка APK, проверка целостности и подписи, установка через Android."
+}

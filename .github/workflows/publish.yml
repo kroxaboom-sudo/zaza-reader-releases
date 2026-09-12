@@ -1,0 +1,54 @@
+name: Publish verified APK
+on:
+  push:
+    branches: [main]
+    paths: ['update.json', 'ZazaReader-*.apk', '.github/workflows/publish.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify APK and manifest
+        run: |
+          python3 - <<'PYCODE'
+          import hashlib,json,pathlib,os
+          m=json.loads(pathlib.Path('update.json').read_text())
+          tag='v'+m['versionName']
+          apk='ZazaReader-'+m['versionName']+'.apk'
+          assert m['packageName']=='me.zaza.reader'
+          assert m['apkUrl']==f'https://github.com/{os.environ["GITHUB_REPOSITORY"]}/releases/download/{tag}/{apk}'
+          data=pathlib.Path(apk).read_bytes()
+          assert len(data)==m['size']
+          assert hashlib.sha256(data).hexdigest()==m['sha256']
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write(f'RELEASE_TAG={tag}\nAPK_FILE={apk}\n')
+          PYCODE
+      - name: Create draft, upload assets, publish as latest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            test "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" = true
+          else
+            gh release create "$RELEASE_TAG" --target "$GITHUB_SHA" --title "Zaza Reader $RELEASE_TAG" --notes-file RELEASE_NOTES.md --draft
+          fi
+          gh release upload "$RELEASE_TAG" "$APK_FILE" update.json --clobber
+          mkdir -p "$RUNNER_TEMP/release-check"
+          gh release download "$RELEASE_TAG" --dir "$RUNNER_TEMP/release-check" --pattern "$APK_FILE" --pattern update.json
+          cmp "$APK_FILE" "$RUNNER_TEMP/release-check/$APK_FILE"
+          cmp update.json "$RUNNER_TEMP/release-check/update.json"
+          gh release edit "$RELEASE_TAG" --draft=false --prerelease=false --latest
+      - name: Verify public update URLs without authentication
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --retry-all-errors --retry-delay 3 "https://github.com/$GITHUB_REPOSITORY/releases/latest/download/update.json" -o "$RUNNER_TEMP/public-update.json"
+          cmp update.json "$RUNNER_TEMP/public-update.json"
+          curl --fail --location --retry 5 --retry-all-errors --retry-delay 3 "https://github.com/$GITHUB_REPOSITORY/releases/download/$RELEASE_TAG/$APK_FILE" -o "$RUNNER_TEMP/public.apk"
+          cmp "$APK_FILE" "$RUNNER_TEMP/public.apk"
