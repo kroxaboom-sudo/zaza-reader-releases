@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 13,
-  "versionName": "0.6.7-preview",
+  "versionCode": 14,
+  "versionName": "0.6.8-preview",
   "minSdk": 33,
-  "size": 123619,
-  "sha256": "a4a68bed948c7625a77945e8df06e8c8553bdfde429058634581e64366522866",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.7-preview/ZazaReader-0.6.7-preview.apk",
-  "notes": "Выбор папки скачивания, CBZ для новых и скачанных глав, режим только Wi-Fi. Автоудаление прочитанного с сохранением текущей и последней прочитанной главы. Счётчики и очистка учитывают закладку с сайта; история и прогресс сохраняются."
+  "size": 127715,
+  "sha256": "a54f9360aacad9dbc7c13ff24cf92d2ea40ddf1f651ff2006dc0d57cb5b2116a",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.8-preview/ZazaReader-0.6.8-preview.apk",
+  "notes": "Упрощены меню и настройки хранения. Исправлены возвраты между экранами, сохранение страницы при удалении, начало чтения без прогресса и ручное разрешение конфликтов."
 }
