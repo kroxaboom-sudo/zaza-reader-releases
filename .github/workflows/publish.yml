@@ -24,7 +24,10 @@ jobs:
           tag='v'+m['versionName']
           apk='ZazaReader-'+m['versionName']+'.apk'
           data=pathlib.Path(apk).read_bytes()
-          for manifest, minimum_sdk in [('update.json', 33), ('update-android9.json', 28)]:
+          assert m['minSdk'] >= 33
+          for manifest in ['update.json', 'update-android9.json']:
+              # Releases through 0.6.18 used a separate legacy minimum.
+              minimum_sdk = 28 if m['versionCode'] <= 24 and manifest == 'update-android9.json' else m['minSdk']
               current=json.loads(pathlib.Path(manifest).read_text())
               assert current['schema']==1 and current['packageName']=='me.zaza.reader'
               assert current['versionCode']==m['versionCode'] and current['versionName']==m['versionName']
