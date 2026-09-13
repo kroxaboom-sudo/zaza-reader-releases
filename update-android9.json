@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 18,
-  "versionName": "0.6.12-preview",
+  "versionCode": 19,
+  "versionName": "0.6.13-preview",
   "minSdk": 28,
   "size": 152374,
-  "sha256": "e2de390866f5c537ec2ece18593c1dd6e34541634af6411c63c271420f49d029",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.12-preview/ZazaReader-0.6.12-preview.apk",
-  "notes": "Вкладка «Новое», фоновая проверка и необязательное автоскачивание новых глав для произведений со скачанными главами. Прокрутка с инерцией, исправление случайных переходов при касании края, совместимость загрузчика со старым WebView Android 9."
+  "sha256": "0cd4b5c96ed276921f70f56ee10a4eba16800d1efa924514165aeb60ed31bb08",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.13-preview/ZazaReader-0.6.13-preview.apk",
+  "notes": "Читалка: постраничный режим с горизонтальными взмахами, непрерывная вертикальная лента, предзагрузка скачанных изображений, сохранение страницы и позиции внутри неё, общий масштаб для глав произведения. Настройки: Ещё → Настройки → Чтение."
 }
