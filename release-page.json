@@ -1,21 +1,33 @@
 {
-  "version": "0.6.19-preview",
+  "version": "0.6.20-preview",
   "files": {
-    "README.md": "37b0bf263ab8762e947a4352d5394292e3d624fb15dcbbb760b1522f98b4fffb",
-    "RELEASE_NOTES.md": "3797eaf65b72b0242d3136eaa5838037f346386ccacc1db4119eee26ada60479"
+    "README.md": "2e320365478053072df4be155a55af7df8f9515646b5d08890e13d95ca237e9a",
+    "RELEASE_NOTES.md": "b54f6754b5ec1d01ea271d5f97fee4e58774ad864ca17bf37ff389830ee05d0f"
   },
   "screenshots": [
     {
-      "path": "assets/screenshots/0.6.19/chapters.png",
-      "version": "0.6.19-preview",
+      "path": "assets/screenshots/0.6.20/chapters.png",
+      "version": "0.6.20-preview",
       "sha256": "7461abf280d6b2e362580f9c9ea17891de202ca85550b037bfce42a3c4e979f7",
-      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34749223657"
+      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
     },
     {
-      "path": "assets/screenshots/0.6.19/updates.png",
-      "version": "0.6.19-preview",
-      "sha256": "6e4cf46c772af008b821aac9a6bd55da94e1e13df192d9a5cea565d90138f892",
-      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34749223657"
+      "path": "assets/screenshots/0.6.20/updates.png",
+      "version": "0.6.20-preview",
+      "sha256": "3ba23dc11f6903f52c58ffed21ad1bea4bcd8d02f353c3942ed3aae8f552ba2e",
+      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
+    },
+    {
+      "path": "assets/screenshots/0.6.20/sync-totals.png",
+      "version": "0.6.20-preview",
+      "sha256": "75307723c826d4528e2a6254540ec03c9e19bd7d4fd049bca7a20b70c84bab31",
+      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
+    },
+    {
+      "path": "assets/screenshots/0.6.20/downloads.png",
+      "version": "0.6.20-preview",
+      "sha256": "1ecdcecf75be52a3341f0a0912237a94749db7bb00c6c5d3afb8041ecdc70068",
+      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
     }
   ]
 }
