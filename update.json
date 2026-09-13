@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 20,
-  "versionName": "0.6.14-preview",
+  "versionCode": 21,
+  "versionName": "0.6.15-preview",
   "minSdk": 33,
   "size": 156470,
-  "sha256": "53b0336757f137312b4862f2312d8d78651bc1e5d24bc09be778b60b0b628217",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.14-preview/ZazaReader-0.6.14-preview.apk",
-  "notes": "Понятные статусы синхронизации: ожидание сети, отправка прогресса, истёкший вход, ограничения сайта и конфликт позиций. Краткий статус в библиотеке, подробности и действия на экране синхронизации. Позиции телефона и сайта показаны номером главы и страницы."
+  "sha256": "cafd37c39cd6b72669cfb9533afb733f4c9902a5b551f2bff50ef118fef5198b",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.15-preview/ZazaReader-0.6.15-preview.apk",
+  "notes": "Автоматический переход к следующей главе при продолжении прокрутки или перелистывания после конца текущей. Нескачанная глава загружается с учётом Wi-Fi и открывается с начала. Переход можно выключить в настройках чтения."
 }
