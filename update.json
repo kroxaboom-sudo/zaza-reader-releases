@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 24,
-  "versionName": "0.6.18-preview",
+  "versionCode": 25,
+  "versionName": "0.6.19-preview",
   "minSdk": 33,
-  "size": 160566,
-  "sha256": "0b42b37b43a477d3e297f8cad8c6199e29666268fa23f823a604315ade8f9b4b",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.18-preview/ZazaReader-0.6.18-preview.apk",
-  "notes": "Исправлено отображение версии приложения: настройки и экран обновлений получают фактическую версию установленного APK из одного источника. После обновления старая подпись версии больше не сохраняется."
+  "size": 164662,
+  "sha256": "0f2cfdc9606870ddffbb9c98b67f0888943bd7fcb13701d9c9935f59165cf9cc",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.19-preview/ZazaReader-0.6.19-preview.apk",
+  "notes": "Улучшена работа с большой библиотекой: просмотр карточки больше не добавляет произведение автоматически, уточнены счётчики импорта, список прокручивается без кнопок «Следующие 40» и сохраняет поиск, фильтры и позицию. Синхронизация сначала отправляет изменённый прогресс, пропускает недавно проверенные позиции и продолжает импорт частями. Минимальная версия — Android 13."
 }

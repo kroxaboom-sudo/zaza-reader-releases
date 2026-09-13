@@ -16,7 +16,7 @@
 <text x="265" y="115" fill="#edf5ff" font-size="59" font-weight="700">Zaza Reader</text>
 <text x="268" y="161" fill="#c1d1df" font-size="25">Ваша библиотека. Всегда под рукой.</text>
 <rect x="268" y="191" width="141" height="33" rx="16" fill="#b5ef86"/>
-<text x="338" y="213" text-anchor="middle" fill="#151b29" font-size="16" font-weight="700">Android 9+</text>
+<text x="338" y="213" text-anchor="middle" fill="#151b29" font-size="16" font-weight="700">Android 13+</text>
 <text x="430" y="213" fill="#a4bbc8" font-size="16">Чтение · Загрузки · Синхронизация</text>
 </g>
 </svg>
