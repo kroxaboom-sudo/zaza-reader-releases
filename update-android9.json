@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 19,
-  "versionName": "0.6.13-preview",
+  "versionCode": 20,
+  "versionName": "0.6.14-preview",
   "minSdk": 28,
-  "size": 152374,
-  "sha256": "0cd4b5c96ed276921f70f56ee10a4eba16800d1efa924514165aeb60ed31bb08",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.13-preview/ZazaReader-0.6.13-preview.apk",
-  "notes": "Читалка: постраничный режим с горизонтальными взмахами, непрерывная вертикальная лента, предзагрузка скачанных изображений, сохранение страницы и позиции внутри неё, общий масштаб для глав произведения. Настройки: Ещё → Настройки → Чтение."
+  "size": 156470,
+  "sha256": "53b0336757f137312b4862f2312d8d78651bc1e5d24bc09be778b60b0b628217",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.14-preview/ZazaReader-0.6.14-preview.apk",
+  "notes": "Понятные статусы синхронизации: ожидание сети, отправка прогресса, истёкший вход, ограничения сайта и конфликт позиций. Краткий статус в библиотеке, подробности и действия на экране синхронизации. Позиции телефона и сайта показаны номером главы и страницы."
 }
