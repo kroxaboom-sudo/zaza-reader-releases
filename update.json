@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 23,
-  "versionName": "0.6.17-preview",
+  "versionCode": 24,
+  "versionName": "0.6.18-preview",
   "minSdk": 33,
   "size": 160566,
-  "sha256": "c5e3e424151d74ab18ebb73a5bf19c626ce72b962ed230e5578e29b8311c1e36",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.17-preview/ZazaReader-0.6.17-preview.apk",
-  "notes": "В списке глав появился сохраняемый переключатель «Только непрочитанные главы». Команда «Скачать все непрочитанные» охватывает весь сохранённый каталог, учитывает закладку сайта и пропускает скачанные главы, активную очередь и повторные переводы."
+  "sha256": "0b42b37b43a477d3e297f8cad8c6199e29666268fa23f823a604315ade8f9b4b",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.18-preview/ZazaReader-0.6.18-preview.apk",
+  "notes": "Исправлено отображение версии приложения: настройки и экран обновлений получают фактическую версию установленного APK из одного источника. После обновления старая подпись версии больше не сохраняется."
 }
