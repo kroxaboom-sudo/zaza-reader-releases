@@ -1,0 +1,21 @@
+{
+  "version": "0.6.18-preview",
+  "files": {
+    "README.md": "7b99ea126f69d02057c508586cf91ece0be5e991dca5494706ae7b213830eab3",
+    "RELEASE_NOTES.md": "87aac37b08ece911aff09ee8448c6d814a483053e3a6d287058656e1b880db71"
+  },
+  "screenshots": [
+    {
+      "path": "assets/screenshots/0.6.18/chapters.png",
+      "version": "0.6.18-preview",
+      "sha256": "7e8c20d9112d41f3caf7caa24d59f0edb955a64558028a07e072425da655a550",
+      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34747513711"
+    },
+    {
+      "path": "assets/screenshots/0.6.18/updates.png",
+      "version": "0.6.18-preview",
+      "sha256": "eb3cfde9a43f9d53aaf0fb4173c5e4249f4419d409f58270f1336791b877d960",
+      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34747513711"
+    }
+  ]
+}

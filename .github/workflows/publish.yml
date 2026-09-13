@@ -2,7 +2,7 @@ name: Publish verified APK
 on:
   push:
     branches: [main]
-    paths: ['update.json', 'update-android9.json', 'ZazaReader-*.apk', '.github/workflows/publish.yml']
+    paths: ['update.json', 'update-android9.json', 'ZazaReader-*.apk', '.github/workflows/publish.yml', 'README.md', 'RELEASE_NOTES.md', 'release-page.json', 'assets/**', 'tools/check-release-page.py']
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Verify release page
+        run: python3 tools/check-release-page.py
       - name: Verify APK and manifests
         run: |
           python3 - <<'PYCODE'
@@ -38,7 +40,15 @@ jobs:
         run: |
           set -euo pipefail
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            test "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" = true
+            if [ "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" != true ]; then
+              mkdir -p "$RUNNER_TEMP/existing-release"
+              gh release download "$RELEASE_TAG" --dir "$RUNNER_TEMP/existing-release" --pattern "$APK_FILE" --pattern update.json --pattern update-android9.json
+              cmp "$APK_FILE" "$RUNNER_TEMP/existing-release/$APK_FILE"
+              cmp update.json "$RUNNER_TEMP/existing-release/update.json"
+              cmp update-android9.json "$RUNNER_TEMP/existing-release/update-android9.json"
+              echo "Existing release verified; documentation-only update."
+              exit 0
+            fi
           else
             gh release create "$RELEASE_TAG" --target "$GITHUB_SHA" --title "Zaza Reader $RELEASE_TAG" --notes-file RELEASE_NOTES.md --draft
           fi
