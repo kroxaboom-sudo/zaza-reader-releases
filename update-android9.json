@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 17,
-  "versionName": "0.6.11-preview",
+  "versionCode": 18,
+  "versionName": "0.6.12-preview",
   "minSdk": 28,
-  "size": 140086,
-  "sha256": "2a4d03cf2b16572d9e80cb4ed3e85506162d0e385e96c72ff353f08526d0f8f1",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.11-preview/ZazaReader-0.6.11-preview.apk",
-  "notes": "Статус фоновой синхронизации, общая история, размер обложек, скачивание диапазона глав, папки произведений, расширенная карточка и новый значок. Исправлено обновление на Android 9 и уведомления на Android 9–12."
+  "size": 152374,
+  "sha256": "e2de390866f5c537ec2ece18593c1dd6e34541634af6411c63c271420f49d029",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.12-preview/ZazaReader-0.6.12-preview.apk",
+  "notes": "Вкладка «Новое», фоновая проверка и необязательное автоскачивание новых глав для произведений со скачанными главами. Прокрутка с инерцией, исправление случайных переходов при касании края, совместимость загрузчика со старым WebView Android 9."
 }
