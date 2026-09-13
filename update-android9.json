@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 16,
-  "versionName": "0.6.10-preview",
+  "versionCode": 17,
+  "versionName": "0.6.11-preview",
   "minSdk": 28,
-  "size": 135907,
-  "sha256": "904c70366c8d8bda302ab0d52e9ee928a5363248df493e4bd856a76bdaa39c2b",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.10-preview/ZazaReader-0.6.10-preview.apk",
-  "notes": "Автозагрузка описаний и обложек, полоса прокрутки главы, Android 9+, резервные копии библиотеки и прогресса в файл/облако и по расписанию."
+  "size": 140086,
+  "sha256": "2a4d03cf2b16572d9e80cb4ed3e85506162d0e385e96c72ff353f08526d0f8f1",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.11-preview/ZazaReader-0.6.11-preview.apk",
+  "notes": "Статус фоновой синхронизации, общая история, размер обложек, скачивание диапазона глав, папки произведений, расширенная карточка и новый значок. Исправлено обновление на Android 9 и уведомления на Android 9–12."
 }
