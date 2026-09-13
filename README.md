@@ -3,6 +3,12 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/latest"><img src="https://img.shields.io/github/v/release/kroxaboom-sudo/zaza-reader-releases?label=Latest&color=77b957&cacheSeconds=300" alt="Последний опубликованный релиз"></a>
+  <img src="https://img.shields.io/badge/Android-9%2B-3DDC84" alt="Android 9 и новее">
+  <img src="https://img.shields.io/badge/интерфейс-русский-4b86b4" alt="Интерфейс на русском">
+</p>
+
+<p align="center">
   <strong>Читайте мангу на Android, сохраняйте главы и продолжайте с нужной страницы.</strong>
 </p>
 
@@ -19,6 +25,20 @@
 **Zaza Reader** — приложение для чтения с [a.zazaza.me](https://a.zazaza.me/). Библиотека, скачанные главы и локальный прогресс хранятся на телефоне. После подключения аккаунта приложение импортирует закладки и обменивается позицией чтения с сайтом.
 
 **Android 9 и новее · Интерфейс на русском · Тестовые версии Preview**
+
+## Как выглядит приложение
+
+Снимки версии **0.6.18-preview** на Android 13 с демонстрационным произведением.
+
+<table>
+  <tr><th>Главы произведения</th><th>Обновление приложения</th></tr>
+  <tr>
+    <td><a href="assets/screenshots/0.6.18/chapters.png"><img src="assets/screenshots/0.6.18/chapters.png" alt="Список скачанных глав и фильтр непрочитанных в Zaza Reader" width="300"></a></td>
+    <td><a href="assets/screenshots/0.6.18/updates.png"><img src="assets/screenshots/0.6.18/updates.png" alt="Экран обновлений с установленной версией 0.6.18-preview" width="300"></a></td>
+  </tr>
+</table>
+
+Нажмите на снимок, чтобы открыть его в полном размере.
 
 ## Всё для чтения
 
@@ -84,7 +104,7 @@ APK один. Файлы `update.json` и `update-android9.json` нужны ра
 
 ## Развитие проекта
 
-Приложение активно развивается. **Preview** в названии означает тестовую сборку. Версия 0.6.17 проверена в эмуляторах Android 9 и 13; это не гарантирует одинаковую работу на всех устройствах.
+Приложение активно развивается. **Preview** в названии означает тестовую сборку. Проверки проводятся на эмуляторах Android 9 и 13; это не гарантирует одинаковую работу на всех устройствах. Актуальный номер опубликованной версии показан на значке **Latest** в начале страницы.
 
 Дальше — проверки других версий Android, расширение сведений о произведениях, импорт CBZ и более удобное управление занимаемым местом.
 
