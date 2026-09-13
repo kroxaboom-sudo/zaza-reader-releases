@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 22,
-  "versionName": "0.6.16-preview",
+  "versionCode": 23,
+  "versionName": "0.6.17-preview",
   "minSdk": 33,
   "size": 160566,
-  "sha256": "b83baa6994cb49f28768ba7824b8bb95dafacc3cb029129641fdb867aaca33a5",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.16-preview/ZazaReader-0.6.16-preview.apk",
-  "notes": "Обложки хранятся постоянно и открываются без ожидания сайта. Резервная копия включает обложки, каталог глав и точную позицию чтения. Даты успешной копии и восстановления показаны в настройках. Облачные копии отделены от синхронизации устройств."
+  "sha256": "c5e3e424151d74ab18ebb73a5bf19c626ce72b962ed230e5578e29b8311c1e36",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.17-preview/ZazaReader-0.6.17-preview.apk",
+  "notes": "В списке глав появился сохраняемый переключатель «Только непрочитанные главы». Команда «Скачать все непрочитанные» охватывает весь сохранённый каталог, учитывает закладку сайта и пропускает скачанные главы, активную очередь и повторные переводы."
 }
