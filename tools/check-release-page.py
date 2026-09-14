@@ -17,7 +17,7 @@ def check(root):
     for name in ['README.md', 'RELEASE_NOTES.md']:
         digest = hashlib.sha256((root / name).read_bytes()).hexdigest()
         assert review['files'][name] == digest, f'{name} changed since page review'
-    assert notes.startswith('# Zaza Reader ' + version + '\n'), 'Stale release notes'
+    assert notes.startswith('# Skazka Hub ' + version + '\n'), 'Stale release notes'
     assert manifest['notes'].strip() in notes, 'Updater and release notes disagree'
     assert 'img.shields.io/github/v/release/kroxaboom-sudo/zaza-reader-releases' in readme
     assert 'https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/latest' in readme

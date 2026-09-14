@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Zaza Reader — ваша библиотека всегда под рукой" width="960">
+  <img src="assets/banner.svg" alt="Skazka Hub — ваша библиотека всегда под рукой" width="960">
 </p>
 
 <p align="center">
@@ -22,7 +22,7 @@
 
 ---
 
-**Zaza Reader** — приложение для чтения с [a.zazaza.me](https://a.zazaza.me/). Библиотека, скачанные главы и локальный прогресс хранятся на телефоне. После подключения аккаунта приложение импортирует закладки и обменивается позицией чтения с сайтом.
+**Skazka Hub** — приложение для чтения с [a.zazaza.me](https://a.zazaza.me/). Библиотека, скачанные главы и локальный прогресс хранятся на телефоне. После подключения аккаунта приложение импортирует закладки и обменивается позицией чтения с сайтом.
 
 **Android 13 и новее · Интерфейс на русском · Тестовые версии Preview**
 
@@ -33,7 +33,7 @@
 <table>
   <tr><th>Главы произведения</th><th>Обновление приложения</th></tr>
   <tr>
-    <td><a href="assets/screenshots/0.6.20/chapters.png"><img src="assets/screenshots/0.6.20/chapters.png" alt="Список скачанных глав и фильтр непрочитанных в Zaza Reader" width="300"></a></td>
+    <td><a href="assets/screenshots/0.6.20/chapters.png"><img src="assets/screenshots/0.6.20/chapters.png" alt="Список скачанных глав и фильтр непрочитанных в Skazka Hub" width="300"></a></td>
     <td><a href="assets/screenshots/0.6.20/updates.png"><img src="assets/screenshots/0.6.20/updates.png" alt="Экран обновлений с установленной версией 0.6.20-preview" width="300"></a></td>
   </tr>
   <tr><th>Прогресс синхронизации</th><th>Загрузки по произведениям</th></tr>
