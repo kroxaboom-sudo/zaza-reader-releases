@@ -17,13 +17,20 @@ jobs:
           from pathlib import Path
           allowed={'.md','.txt','.json','.yml','.yaml','.py','.sh','.html','.css','.svg','.js','.cjs'}
           skip={'.git','.github','node_modules'}
+          replacements={
+              'Zaza Reader':'Skazka Hub',
+              'ZAZA READER':'SKAZKA HUB',
+              'Zaza reader':'Skazka Hub',
+              'zaza reader':'Skazka Hub',
+          }
           changed=[]
           for p in Path('.').rglob('*'):
               if not p.is_file() or p.suffix.lower() not in allowed or any(part in skip for part in p.parts):
                   continue
               try: text=p.read_text(encoding='utf-8')
               except UnicodeDecodeError: continue
-              new=text.replace('Zaza Reader','Skazka Hub')
+              new=text
+              for old,value in replacements.items(): new=new.replace(old,value)
               if new!=text:
                   p.write_text(new,encoding='utf-8')
                   changed.append(str(p))
@@ -35,5 +42,5 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -A
-          git commit -m 'Replace visible legacy branding with Skazka Hub'
+          git commit -m 'Clean remaining legacy brand case variants'
           git push
