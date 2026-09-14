@@ -1,0 +1,39 @@
+name: Migrate branding to Skazka Hub
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/brand-migration.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace visible legacy brand
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          allowed={'.md','.txt','.json','.yml','.yaml','.py','.sh','.html','.css','.svg','.js','.cjs'}
+          skip={'.git','node_modules'}
+          changed=[]
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in allowed or any(part in skip for part in p.parts):
+                  continue
+              try: text=p.read_text(encoding='utf-8')
+              except UnicodeDecodeError: continue
+              new=text.replace('Zaza Reader','Skazka Hub')
+              if new!=text:
+                  p.write_text(new,encoding='utf-8')
+                  changed.append(str(p))
+          print('\n'.join(changed) if changed else 'No legacy visible brand strings found')
+          PY
+      - name: Commit migration
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m 'Replace visible Zaza Reader branding with Skazka Hub'
+          git push
