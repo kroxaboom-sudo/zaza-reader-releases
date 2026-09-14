@@ -53,7 +53,7 @@ jobs:
               exit 0
             fi
           else
-            gh release create "$RELEASE_TAG" --target "$GITHUB_SHA" --title "Zaza Reader $RELEASE_TAG" --notes-file RELEASE_NOTES.md --draft
+            gh release create "$RELEASE_TAG" --target "$GITHUB_SHA" --title "Skazka Hub $RELEASE_TAG" --notes-file RELEASE_NOTES.md --draft
           fi
           gh release upload "$RELEASE_TAG" "$APK_FILE" update.json update-android9.json --clobber
           mkdir -p "$RUNNER_TEMP/release-check"
