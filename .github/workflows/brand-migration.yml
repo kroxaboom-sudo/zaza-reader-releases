@@ -16,7 +16,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           allowed={'.md','.txt','.json','.yml','.yaml','.py','.sh','.html','.css','.svg','.js','.cjs'}
-          skip={'.git','node_modules'}
+          skip={'.git','.github','node_modules'}
           changed=[]
           for p in Path('.').rglob('*'):
               if not p.is_file() or p.suffix.lower() not in allowed or any(part in skip for part in p.parts):
@@ -35,5 +35,5 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -A
-          git commit -m 'Replace visible Zaza Reader branding with Skazka Hub'
+          git commit -m 'Replace visible legacy branding with Skazka Hub'
           git push
