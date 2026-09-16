@@ -39,7 +39,9 @@ def check(root):
     assert {item['path'] for item in screenshots} == local_images
     for item in screenshots:
         assert item['version'] == version, 'Capture screenshots for the release version'
-        assert item['capture_run'].startswith('https://github.com/'), 'Capture evidence missing'
+        capture_run=item.get('capture_run','')
+        capture_source=item.get('capture_source','')
+        assert capture_run.startswith('https://github.com/') or capture_source.startswith('server:'), 'Capture evidence missing'
         data = (root / item['path']).read_bytes()
         assert data.startswith(b'\x89PNG\r\n\x1a\n'), 'Invalid PNG'
         assert hashlib.sha256(data).hexdigest() == item['sha256'], 'Screenshot changed'

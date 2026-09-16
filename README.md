@@ -28,18 +28,13 @@
 
 ## Как выглядит приложение
 
-Снимки версии **0.6.20-preview** на Android 13 с демонстрационными произведениями и тестовыми данными синхронизации.
+Снимки версии **0.6.21-preview** на Android 13, полученные серверным release-gate после проверки обновления поверх 0.6.20.
 
 <table>
-  <tr><th>Главы произведения</th><th>Обновление приложения</th></tr>
+  <tr><th>Библиотека</th><th>Настройки</th></tr>
   <tr>
-    <td><a href="assets/screenshots/0.6.20/chapters.png"><img src="assets/screenshots/0.6.20/chapters.png" alt="Список скачанных глав и фильтр непрочитанных в Skazka Hub" width="300"></a></td>
-    <td><a href="assets/screenshots/0.6.20/updates.png"><img src="assets/screenshots/0.6.20/updates.png" alt="Экран обновлений с установленной версией 0.6.20-preview" width="300"></a></td>
-  </tr>
-  <tr><th>Прогресс синхронизации</th><th>Загрузки по произведениям</th></tr>
-  <tr>
-    <td><a href="assets/screenshots/0.6.20/sync-totals.png"><img src="assets/screenshots/0.6.20/sync-totals.png" alt="Общий счётчик и история синхронизации" width="300"></a></td>
-    <td><a href="assets/screenshots/0.6.20/downloads.png"><img src="assets/screenshots/0.6.20/downloads.png" alt="Главы, сгруппированные по произведениям в загрузках" width="300"></a></td>
+    <td><a href="assets/screenshots/0.6.21/library.png"><img src="assets/screenshots/0.6.21/library.png" alt="Библиотека Skazka Hub 0.6.21-preview" width="300"></a></td>
+    <td><a href="assets/screenshots/0.6.21/settings.png"><img src="assets/screenshots/0.6.21/settings.png" alt="Настройки Skazka Hub 0.6.21-preview" width="300"></a></td>
   </tr>
 </table>
 
@@ -69,7 +64,7 @@
 ## Установка
 
 1. Откройте **[последний релиз](https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/latest)**.
-2. В разделе **Assets** скачайте файл `ZazaReader-….apk` — он один для всех поддерживаемых версий Android.
+2. В разделе **Assets** скачайте файл `SkazkaHub-….apk` — он один для всех поддерживаемых версий Android.
 3. Откройте APK и подтвердите установку. Если Android запросит разрешение на установку из этого источника, выдайте его приложению, из которого открыли файл.
 4. Найдите произведение в каталоге или подключите аккаунт сайта для импорта закладок.
 

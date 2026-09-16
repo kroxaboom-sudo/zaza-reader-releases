@@ -1,33 +1,21 @@
 {
-  "version": "0.6.20-preview",
+  "version": "0.6.21-preview",
   "files": {
-    "README.md": "477da3ce519c7bf36f856093f6cb8140f51a5f1a8d9746a779342c7387aeb148",
-    "RELEASE_NOTES.md": "15cb6aff8fa112b044d3a4cf5664a31e262ac0e5fae11fba24c6290cea27c999"
+    "README.md": "c3f73669d46986bcb25b904b77076f2ae4b2b1bbd523f5ca0e7510d0a2fb4273",
+    "RELEASE_NOTES.md": "145ee9736384b8401e2c3ab50d531a5c5885cb8c776a0217558f216ad4ba8abe"
   },
   "screenshots": [
     {
-      "path": "assets/screenshots/0.6.20/chapters.png",
-      "version": "0.6.20-preview",
-      "sha256": "7461abf280d6b2e362580f9c9ea17891de202ca85550b037bfce42a3c4e979f7",
-      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
+      "path": "assets/screenshots/0.6.21/library.png",
+      "version": "0.6.21-preview",
+      "sha256": "fd32fb80fae477674887699a84f1263301b2a5b826369e9c449f592086314fcc",
+      "capture_source": "server:grouple-core-01/android-33/upgrade-gate"
     },
     {
-      "path": "assets/screenshots/0.6.20/updates.png",
-      "version": "0.6.20-preview",
-      "sha256": "3ba23dc11f6903f52c58ffed21ad1bea4bcd8d02f353c3942ed3aae8f552ba2e",
-      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
-    },
-    {
-      "path": "assets/screenshots/0.6.20/sync-totals.png",
-      "version": "0.6.20-preview",
-      "sha256": "75307723c826d4528e2a6254540ec03c9e19bd7d4fd049bca7a20b70c84bab31",
-      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
-    },
-    {
-      "path": "assets/screenshots/0.6.20/downloads.png",
-      "version": "0.6.20-preview",
-      "sha256": "1ecdcecf75be52a3341f0a0912237a94749db7bb00c6c5d3afb8041ecdc70068",
-      "capture_run": "https://github.com/kroxaboom-sudo/zaza-reader/actions/runs/34751798434"
+      "path": "assets/screenshots/0.6.21/settings.png",
+      "version": "0.6.21-preview",
+      "sha256": "077009fcd05fc71c762aaf49a1a0caa576211b420dd396ba4b352af4a7291c11",
+      "capture_source": "server:grouple-core-01/android-33/upgrade-gate"
     }
   ]
 }
