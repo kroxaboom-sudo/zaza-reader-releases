@@ -2,7 +2,7 @@ name: Publish verified APK
 on:
   push:
     branches: [main]
-    paths: ['update.json', 'update-android9.json', 'ZazaReader-*.apk', '.github/workflows/publish.yml', 'README.md', 'RELEASE_NOTES.md', 'release-page.json', 'assets/**', 'tools/check-release-page.py']
+    paths: ['update.json', 'update-android9.json', 'ZazaReader-*.apk', 'SkazkaHub-*.apk', '.github/workflows/publish.yml', 'README.md', 'RELEASE_NOTES.md', 'release-page.json', 'assets/**', 'tools/check-release-page.py']
   workflow_dispatch:
 permissions:
   contents: write
@@ -22,11 +22,19 @@ jobs:
           import hashlib,json,pathlib,os
           m=json.loads(pathlib.Path('update.json').read_text())
           tag='v'+m['versionName']
-          apk='ZazaReader-'+m['versionName']+'.apk'
-          data=pathlib.Path(apk).read_bytes()
+          # Historical releases keep their original asset names. Starting with the
+          # transition generation, all newly published APKs use the Skazka Hub brand.
+          prefix='SkazkaHub-' if m['versionCode'] >= 27 else 'ZazaReader-'
+          apk=prefix+m['versionName']+'.apk'
+          path=pathlib.Path(apk)
+          assert path.is_file(), f'Missing branded APK asset: {apk}'
+          data=path.read_bytes()
           assert m['minSdk'] >= 33
           for manifest in ['update.json', 'update-android9.json']:
-              # Releases through 0.6.18 used a separate legacy minimum.
+              # Releases through 0.6.18 used a separate legacy minimum. New releases
+              # are Android 13+ only, but the compatibility manifest remains published
+              # so older installed clients get an explicit incompatible update instead
+              # of a missing feed.
               minimum_sdk = 28 if m['versionCode'] <= 24 and manifest == 'update-android9.json' else m['minSdk']
               current=json.loads(pathlib.Path(manifest).read_text())
               assert current['schema']==1 and current['packageName']=='me.zaza.reader'
