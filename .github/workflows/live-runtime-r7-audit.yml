@@ -13,6 +13,8 @@ jobs:
         shell: bash
         run: |
           set -u
+          echo '=== HOSTKEY deployment-info ==='
+          curl --silent --show-error --location --max-time 15 --write-out '\nDEPLOYMENT_HTTP %{http_code}\n' 'https://grouple-core.duckdns.org/api/deployment-info' || true
           declare -A urls=(
             [hostkey]='https://grouple-core.duckdns.org/api/runtime-pack'
             [cloudflare]='https://zaza-reader-discovery.poluyanovis.workers.dev/api/runtime-pack'
@@ -53,7 +55,7 @@ jobs:
           echo '=== health/discovery ==='
           for base in 'https://grouple-core.duckdns.org' 'https://zaza-reader-discovery.poluyanovis.workers.dev' 'https://grouple-core.vercel.app'; do
             echo "BASE $base"
-            curl --silent --show-error --location --max-time 15 --write-out '\nHEALTH_HTTP %{http_code}\n' "$base/healthz" || true
+            curl --silent --show-error --location --max-time 15 --write-out '\nHEALTH_HTTP %{http_code}\n' "$base/api/health" || true
             curl --silent --show-error --location --max-time 15 --write-out '\nDISCOVERY_HTTP %{http_code}\n' "$base/api/discovery" || true
           done
           exit "$failed"
