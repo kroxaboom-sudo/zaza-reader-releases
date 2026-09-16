@@ -9,19 +9,30 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch and verify live Runtime Packs
+      - name: Fetch and diagnose live Runtime Packs
         shell: bash
         run: |
-          set -euo pipefail
+          set -u
           declare -A urls=(
             [hostkey]='https://grouple-core.duckdns.org/api/runtime-pack'
             [cloudflare]='https://zaza-reader-discovery.poluyanovis.workers.dev/api/runtime-pack'
             [vercel]='https://grouple-core.vercel.app/api/runtime-pack'
           )
+          failed=0
           for name in hostkey cloudflare vercel; do
             echo "=== $name ==="
-            curl --fail --location --retry 3 --retry-all-errors --max-time 25 "${urls[$name]}" -o "/tmp/$name.json"
-            NAME="$name" FILE="/tmp/$name.json" node <<'NODE'
+            code="$(curl --silent --show-error --location --max-time 25 --output "/tmp/$name.json" --write-out '%{http_code}' "${urls[$name]}" || echo 000)"
+            echo "HTTP $code"
+            if [ -s "/tmp/$name.json" ]; then
+              echo "BODY $(cat "/tmp/$name.json")"
+            else
+              echo 'BODY <empty>'
+            fi
+            if [ "$code" != 200 ]; then
+              failed=1
+              continue
+            fi
+            NAME="$name" FILE="/tmp/$name.json" node <<'NODE' || failed=1
           const fs=require('fs'),crypto=require('crypto');
           const name=process.env.NAME,file=process.env.FILE;
           const envelope=JSON.parse(fs.readFileSync(file,'utf8'));
@@ -32,10 +43,17 @@ jobs:
           if(signature.length!==64||!crypto.verify(null,payload,key,signature)) throw new Error(name+': signature verification failed');
           const pack=JSON.parse(payload.toString('utf8'));
           if(pack.revision<7) throw new Error(name+': stale revision '+pack.revision);
-          if(pack.endpoints?.primaryApi!=='https://grouple-core.duckdns.org') throw new Error(name+': wrong primary');
+          if(pack.endpoints?.primaryApi!=='https://grouple-core.duckdns.org') throw new Error(name+': wrong primary '+pack.endpoints?.primaryApi);
           const extraction=pack.sources?.zazaza?.chapterExtraction;
           if(!extraction||extraction.image?.class!=='manga-img'||extraction.pageCounter?.class!=='page-selector') throw new Error(name+': chapterExtraction missing');
           if(!Array.isArray(pack.endpoints?.fallbackApis)||!pack.endpoints.fallbackApis.includes('https://zaza-reader-discovery.poluyanovis.workers.dev')) throw new Error(name+': Cloudflare fallback missing');
-          console.log(JSON.stringify({name,revision:pack.revision,fallbacks:pack.endpoints.fallbackApis,signature:'valid'}));
+          console.log('VERIFIED '+JSON.stringify({name,revision:pack.revision,fallbacks:pack.endpoints.fallbackApis,signature:'valid'}));
           NODE
           done
+          echo '=== health/discovery ==='
+          for base in 'https://grouple-core.duckdns.org' 'https://zaza-reader-discovery.poluyanovis.workers.dev' 'https://grouple-core.vercel.app'; do
+            echo "BASE $base"
+            curl --silent --show-error --location --max-time 15 --write-out '\nHEALTH_HTTP %{http_code}\n' "$base/healthz" || true
+            curl --silent --show-error --location --max-time 15 --write-out '\nDISCOVERY_HTTP %{http_code}\n' "$base/api/discovery" || true
+          done
+          exit "$failed"
