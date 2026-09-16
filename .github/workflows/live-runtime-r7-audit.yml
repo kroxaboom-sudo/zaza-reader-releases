@@ -1,0 +1,41 @@
+name: Audit live Runtime Pack r7 once
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/live-runtime-r7-audit.yml']
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch and verify live Runtime Packs
+        shell: bash
+        run: |
+          set -euo pipefail
+          declare -A urls=(
+            [hostkey]='https://grouple-core.duckdns.org/api/runtime-pack'
+            [cloudflare]='https://zaza-reader-discovery.poluyanovis.workers.dev/api/runtime-pack'
+            [vercel]='https://grouple-core.vercel.app/api/runtime-pack'
+          )
+          for name in hostkey cloudflare vercel; do
+            echo "=== $name ==="
+            curl --fail --location --retry 3 --retry-all-errors --max-time 25 "${urls[$name]}" -o "/tmp/$name.json"
+            NAME="$name" FILE="/tmp/$name.json" node <<'NODE'
+          const fs=require('fs'),crypto=require('crypto');
+          const name=process.env.NAME,file=process.env.FILE;
+          const envelope=JSON.parse(fs.readFileSync(file,'utf8'));
+          if(envelope.format!=='grouple-runtime-envelope'||envelope.schema!==1||envelope.keyId!=='runtime-v1'||envelope.algorithm!=='Ed25519') throw new Error(name+': invalid envelope');
+          const payload=Buffer.from(envelope.payload,'base64');
+          const signature=Buffer.from(envelope.signature,'base64');
+          const key=crypto.createPublicKey({key:Buffer.from('MCowBQYDK2VwAyEA3NZzgsW+D+9IYnJ8zUJlIIvBEw4BbJlw4nIngmV1PkU=','base64'),format:'der',type:'spki'});
+          if(signature.length!==64||!crypto.verify(null,payload,key,signature)) throw new Error(name+': signature verification failed');
+          const pack=JSON.parse(payload.toString('utf8'));
+          if(pack.revision<7) throw new Error(name+': stale revision '+pack.revision);
+          if(pack.endpoints?.primaryApi!=='https://grouple-core.duckdns.org') throw new Error(name+': wrong primary');
+          const extraction=pack.sources?.zazaza?.chapterExtraction;
+          if(!extraction||extraction.image?.class!=='manga-img'||extraction.pageCounter?.class!=='page-selector') throw new Error(name+': chapterExtraction missing');
+          if(!Array.isArray(pack.endpoints?.fallbackApis)||!pack.endpoints.fallbackApis.includes('https://zaza-reader-discovery.poluyanovis.workers.dev')) throw new Error(name+': Cloudflare fallback missing');
+          console.log(JSON.stringify({name,revision:pack.revision,fallbacks:pack.endpoints.fallbackApis,signature:'valid'}));
+          NODE
+          done
