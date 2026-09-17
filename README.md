@@ -14,16 +14,17 @@
 
 ## RU
 
-**Skazka Hub** — Android-приложение для чтения с локальной/offline-first библиотекой. Текущий публично поддерживаемый источник — **a.zazaza.me**; архитектура проекта предусматривает подключение дополнительных источников через Grouple Registry после проверки.
+**Skazka Hub** — Android-приложение для чтения с local-first/offline-first библиотекой. Текущий публично поддерживаемый источник — **a.zazaza.me**; дополнительные источники и зеркала допускаются через проверяемый Grouple Registry.
 
 ### Текущий публичный выпуск
 
-- **Skazka Hub v0.6.21-preview**.
+- **Skazka Hub v0.6.21-preview** (`versionCode 27`).
 - Минимальная версия: **Android 13 / API 33**.
-- Это переходный выпуск после Zaza Reader: публичное имя уже **Skazka Hub**, а legacy `applicationId` / package сохранён для установки обновления поверх предыдущей версии без удаления приложения.
-- Старые APK Zaza Reader остаются в истории как часть совместимого пути обновления.
+- Публичное имя уже Skazka Hub, а legacy `applicationId`/package сохранён для установки поверх предыдущих версий без удаления приложения и потери данных.
+- APK 0.6.21 считается неизменяемым опубликованным артефактом. Следующая ветка разработки — **0.6.22-preview / versionCode 28**.
+- Исторические APK Zaza Reader остаются частью совместимого upgrade history.
 
-Скачать актуальный APK: **Releases → Latest**. Для обновления устанавливайте новую версию поверх существующей.
+Скачать актуальный публичный APK: **Releases → Latest**. Обновление устанавливается поверх существующей версии.
 
 ### Проверенные скриншоты / Verified screenshots
 
@@ -37,79 +38,87 @@
   </tr>
 </table>
 
-### Что является текущей архитектурой проекта
+### Архитектура проекта
 
-- **Local-first / offline-first:** сохранённая библиотека, локальные метаданные, прогресс и загруженный контент не должны зависеть от постоянной доступности сервера.
-- **SERVER-FIRST:** собственный HOSTKEY — основная площадка для серверной логики, тестов, release-gate, health-check, Telegram-интеграций и эксплуатационных задач.
-- **GitHub минимально:** репозитории, история, теги и публичные Releases; GitHub Actions не должен быть обязательным runtime-звеном проекта.
-- **APP / CFG / REG / SRV / OPS:** APK, удалённая конфигурация, Registry, сервер и эксплуатационный слой версионируются независимо.
-- Обновления **CFG/REG/SRV/OPS** могут распространяться без нового APK; персональные уведомления об APK и no-APK изменениях предусмотрены через Telegram.
-- **Direct** — основной маршрут к источникам; **VPN/Proxy** — резерв и диагностический маршрут.
-- **Vercel** сохраняется как отключаемый резервный модуль и не является обязательной зависимостью.
-- Основные функции приложения не должны требовать платной серверной инфраструктуры.
+- **Local-first / offline-first:** библиотека, SQLite LocalState, прогресс, история, настройки и скачанный контент не требуют постоянной доступности сервера.
+- **SERVER-FIRST:** собственный HOSTKEY — основная площадка для backend, Android device-gates, release-gate, health-check, Telegram и эксплуатационных задач.
+- GitHub используется для исходников/истории/тегов и публичных Releases, но не является обязательным runtime/build-узлом.
+- **APP / CFG / REG / SRV / OPS** версионируются независимо.
+- Direct — основной сетевой маршрут; VPN/Proxy — резерв и диагностика. Cloudflare — активный внешний fallback.
+- **Vercel сохранён только как disabled cold reserve** и не участвует в обычном API/discovery/Telegram-трафике.
+- Основные функции не должны требовать платной серверной инфраструктуры.
 
-### Что сейчас находится в работе
+### Уже завершено в текущем `main`
 
-Текущий критический путь разработки:
+После опубликованной 0.6.21 ветка разработки уже включает:
 
-1. единая система Downloads для **IMAGE + TEXT**;
-2. **SQLite / LocalState + Library v2**;
-3. offline/sync и единый Download Manager;
-4. цепочка TEXT → библиотека → Reader;
-5. updater и проверка бесшовного обновления;
-6. завершение миграции бренда **Zaza Reader → Skazka Hub** и последующее переименование репозиториев в утверждённой точке;
-7. полная локализация **RU/EN** интерфейсов, служебных текстов, описаний и release notes;
-8. финальный релизный аудит: подпись, сохранность данных, endpoints, HOSTKEY, Telegram/Control Panel и соблюдение правила проекта «всё своё».
+- единую Downloads/queue систему для **IMAGE + TEXT**;
+- automatic downloads IMAGE/TEXT через общий state machine;
+- **SQLite LocalState + Library v2**;
+- native TEXT Reader;
+- native **MIXED v1**;
+- Android telemetry queue hardening/coalescing;
+- неинтерактивный HOSTKEY Android 13 device gate;
+- updater migration: будущий `skazka-hub-releases` проверяется первым, текущий legacy feed используется как fallback;
+- development version **0.6.22-preview / 28**, проверенную install-over `0.6.21/27 → 0.6.22/28` с сохранением данных.
 
-Запланированные функции в этом разделе не следует считать уже присутствующими в опубликованном APK, пока они не указаны в release notes конкретной версии.
+Эти пункты не считаются частью публичной 0.6.21, пока не будет выпущена следующая APK.
 
-### Репозиторий
+### Что осталось перед следующим релизом
 
-Этот публичный репозиторий содержит APK, файлы встроенного обновления и пользовательские release notes. Исходный Android-код хранится отдельно в приватном репозитории. Ключ подписи APK не публикуется.
+1. восстановить **существующий** `runtime-v1` signing key и возобновить signed Runtime Pack без активного Vercel; до этого stale remote pack не раздаётся, приложение использует embedded/previous-good fallback;
+2. завершить полный SERVER-FIRST/release/security/«всё своё» audit 0.6.22;
+3. выпустить и проверить 0.6.22 поверх публичной 0.6.21;
+4. только после публикации нового updater выполнить compatibility gate для переименования этого release-repo;
+5. полную миграцию Android package/application ID выполнять отдельно и только с доказанным переносом пользовательских данных.
 
-Текущее имя репозитория `zaza-reader-releases` является legacy-именем и будет изменено в утверждённой точке полной миграции, без разрыва существующего update path.
+### Репозитории
+
+- Android source: приватный **`kroxaboom-sudo/skazka-hub`**.
+- Этот публичный репозиторий хранит APK, update metadata и release notes.
+- Имя **`zaza-reader-releases`** пока сохраняется **только как legacy bootstrap compatibility endpoint**: 0.6.20 не доверяет redirect на новое repo-name, а опубликованная 0.6.21 ещё начинает проверку с legacy feed.
+- Будущее canonical имя — `skazka-hub-releases`; переименование допустимо после публикации updater-моста и повторной проверки redirect/asset chain.
+- APK signing keys никогда не публикуются.
 
 ---
 
 ## EN
 
-**Skazka Hub** is an Android reader built around a local-first/offline-first library. The currently supported public source is **a.zazaza.me**; the architecture is designed to add more verified sources through Grouple Registry later.
+**Skazka Hub** is an Android reader built around a local-first/offline-first library. The currently supported public source is **a.zazaza.me**; additional sources and mirrors are accepted only through the verified Grouple Registry flow.
 
 ### Current public release
 
-- **Skazka Hub v0.6.21-preview**.
+- **Skazka Hub v0.6.21-preview** (`versionCode 27`).
 - Minimum Android version: **Android 13 / API 33**.
-- This is a transition release from Zaza Reader: the public product name is already **Skazka Hub**, while the legacy Android `applicationId` / package is preserved for seamless upgrades without removing the app.
-- Historical Zaza Reader APKs remain available as part of the compatible upgrade history.
+- The public brand is Skazka Hub while the legacy Android application/package ID is intentionally retained for seamless upgrades and user-data continuity.
+- The published 0.6.21 APK is immutable. Current development line: **0.6.22-preview / versionCode 28**.
+- Historical Zaza Reader APKs remain part of the compatible upgrade history.
 
-Use **Releases → Latest** for the current APK and install updates over the existing app. The verified **0.6.21-preview** screenshots are shown above.
+Use **Releases → Latest** for the current public APK and install updates over the existing app.
 
-### Current project architecture
+### Project architecture
 
-- **Local-first / offline-first:** saved library data, local metadata, reading progress and downloaded content must remain usable without continuous server availability.
-- **SERVER-FIRST:** the project-owned HOSTKEY server is the primary environment for backend logic, tests, release gates, health checks, Telegram integrations and operations.
-- **Minimal GitHub dependency:** source/history/tags/public Releases; GitHub Actions must not become a required runtime dependency.
+- **Local-first / offline-first:** library data, SQLite LocalState, progress, history, settings and downloaded content remain usable without continuous connectivity.
+- **SERVER-FIRST:** HOSTKEY is the primary environment for backend services, Android device gates, release gates, health checks, Telegram integrations and operations.
+- GitHub is used for source/history/tags/public Releases, not as a mandatory runtime/build dependency.
 - Independent version tracks: **APP / CFG / REG / SRV / OPS**.
-- **CFG/REG/SRV/OPS** may be updated without a new APK; Telegram notifications cover both APK and no-APK changes.
-- **Direct** source access is primary; **VPN/Proxy** is a resilience and diagnostic fallback.
-- **Vercel** is retained only as an optional/disableable module, not a mandatory dependency.
-- Core app functionality must not require paid server infrastructure.
+- Direct access is primary; VPN/Proxy provides resilience and diagnostics. Cloudflare is the active external fallback.
+- **Vercel is retained only as a disabled cold reserve** and is not part of normal API/discovery/Telegram traffic.
+- Core functionality must not require paid server infrastructure.
 
-### Current development path
+### Already completed in current `main`
 
-1. unified **IMAGE + TEXT** Downloads;
-2. **SQLite / LocalState + Library v2**;
-3. offline/sync and unified Download Manager;
-4. TEXT → library → Reader flow;
-5. updater and seamless-upgrade verification;
-6. complete **Zaza Reader → Skazka Hub** migration and repository rename at the approved migration point;
-7. complete **RU/EN** coverage for UI, service text, descriptions and release notes;
-8. final release audit covering signing, user-data continuity, endpoints, HOSTKEY, Telegram/Control Panel and the project’s own-code rule.
+Development after public 0.6.21 already includes unified **IMAGE + TEXT** Downloads, automatic download state machine, **SQLite LocalState + Library v2**, native TEXT Reader, native **MIXED v1**, telemetry queue hardening, non-interactive HOSTKEY Android 13 verification, and the release-repository migration bridge. Development version **0.6.22-preview / 28** has passed an Android 13 install-over test from `0.6.21/27` while preserving app data.
 
-Items in the roadmap are not claimed as present in the current APK unless the release notes for that version explicitly say so.
+These capabilities are not claimed as part of public 0.6.21 until the next APK is released.
 
-### Repository role
+### Before the next release
 
-This public repository contains APK files, in-app update metadata and user-facing release notes. Android source code is stored separately in a private repository. APK signing keys are never published.
+The existing `runtime-v1` signing key must be recovered so the current Runtime Pack can be signed without active Vercel; then 0.6.22 must pass the full SERVER-FIRST/release/security/own-code audit and upgrade verification. Release-repository migration happens only after the updater bridge is public and the redirect/asset chain has been re-tested.
 
-The repository name `zaza-reader-releases` is a legacy compatibility name and is planned to change at the approved full-migration point without breaking the existing update path.
+### Repository roles
+
+- Private Android source: **`kroxaboom-sudo/skazka-hub`**.
+- This public repository stores APKs, update metadata and release notes.
+- The name **`zaza-reader-releases`** is temporarily retained only as a legacy bootstrap compatibility endpoint. Planned canonical name: `skazka-hub-releases`, after the compatibility gate.
+- APK signing keys are never published.
