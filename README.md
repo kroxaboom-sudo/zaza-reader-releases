@@ -25,6 +25,18 @@
 
 Скачать актуальный APK: **Releases → Latest**. Для обновления устанавливайте новую версию поверх существующей.
 
+### Проверенные скриншоты / Verified screenshots
+
+Снимки версии **0.6.21-preview**, полученные серверным release-gate на Android 13 после проверки обновления поверх предыдущей версии.
+
+<table>
+  <tr><th>Библиотека / Library</th><th>Настройки / Settings</th></tr>
+  <tr>
+    <td><a href="assets/screenshots/0.6.21/library.png"><img src="assets/screenshots/0.6.21/library.png" alt="Skazka Hub 0.6.21-preview — Library" width="300"></a></td>
+    <td><a href="assets/screenshots/0.6.21/settings.png"><img src="assets/screenshots/0.6.21/settings.png" alt="Skazka Hub 0.6.21-preview — Settings" width="300"></a></td>
+  </tr>
+</table>
+
 ### Что является текущей архитектурой проекта
 
 - **Local-first / offline-first:** сохранённая библиотека, локальные метаданные, прогресс и загруженный контент не должны зависеть от постоянной доступности сервера.
@@ -70,7 +82,7 @@
 - This is a transition release from Zaza Reader: the public product name is already **Skazka Hub**, while the legacy Android `applicationId` / package is preserved for seamless upgrades without removing the app.
 - Historical Zaza Reader APKs remain available as part of the compatible upgrade history.
 
-Use **Releases → Latest** for the current APK and install updates over the existing app.
+Use **Releases → Latest** for the current APK and install updates over the existing app. The verified **0.6.21-preview** screenshots are shown above.
 
 ### Current project architecture
 
