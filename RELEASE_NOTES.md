@@ -2,6 +2,8 @@
 
 > **RU — основной язык · EN — обязательный второй язык**
 
+RU: Переходный выпуск Skazka Hub: новый публичный бренд, сохранённый путь обновления и более надёжная доставка служебных событий. Android 13+. EN: Transitional Skazka Hub release: new public brand, preserved upgrade path, and more reliable operational-event delivery. Android 13+.
+
 ## RU
 
 Переходный выпуск Skazka Hub: новый публичный бренд, сохранённый путь обновления и более надёжная доставка служебных событий. Для Android 13 и новее.
