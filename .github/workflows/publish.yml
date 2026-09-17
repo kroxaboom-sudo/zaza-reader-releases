@@ -52,13 +52,18 @@ jobs:
           set -euo pipefail
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
             if [ "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" != true ]; then
+              # A published APK is immutable: documentation-only refreshes must prove
+              # the APK is byte-for-byte identical before updating notes/manifests.
               mkdir -p "$RUNNER_TEMP/existing-release"
-              gh release download "$RELEASE_TAG" --dir "$RUNNER_TEMP/existing-release" --pattern "$APK_FILE" --pattern update.json --pattern update-android9.json
+              gh release download "$RELEASE_TAG" --dir "$RUNNER_TEMP/existing-release" --pattern "$APK_FILE"
               cmp "$APK_FILE" "$RUNNER_TEMP/existing-release/$APK_FILE"
-              cmp update.json "$RUNNER_TEMP/existing-release/update.json"
-              cmp update-android9.json "$RUNNER_TEMP/existing-release/update-android9.json"
+              gh release upload "$RELEASE_TAG" update.json update-android9.json --clobber
               gh release edit "$RELEASE_TAG" --title "Skazka Hub $RELEASE_TAG" --notes-file RELEASE_NOTES.md --draft=false --prerelease=false --latest
-              echo "Existing release verified and documentation refreshed."
+              mkdir -p "$RUNNER_TEMP/refreshed-release"
+              gh release download "$RELEASE_TAG" --dir "$RUNNER_TEMP/refreshed-release" --pattern update.json --pattern update-android9.json
+              cmp update.json "$RUNNER_TEMP/refreshed-release/update.json"
+              cmp update-android9.json "$RUNNER_TEMP/refreshed-release/update-android9.json"
+              echo "Existing release APK verified; notes and updater manifests refreshed."
               exit 0
             fi
           else
