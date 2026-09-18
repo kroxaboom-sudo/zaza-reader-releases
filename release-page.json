@@ -1,21 +1,34 @@
 {
-  "version": "0.6.21-preview",
+  "version": "0.6.22-preview",
+  "device_gate_commit": "4099585cf969241b22b2571ae0983c008425d646",
   "files": {
-    "README.md": "c7f6bfeaf358954f2cbcf71143e63c7d1dc2ff1e69d5b59e10c3f08bba289c60",
-    "RELEASE_NOTES.md": "5a2be8e4f27572a7fc97641392dd0a22c3320dbbaa48f4ab779a239d315e3fd0"
+    "README.md": "65ce002f65b85008fc6b3b5e48550028dc17f1218f304e2c4dc4b57153b87929",
+    "RELEASE_NOTES.md": "a1b4991c29ec5421b7008fc4d7084d45e946bec049d94128ad316f5ccffebd28"
   },
   "screenshots": [
     {
-      "path": "assets/screenshots/0.6.21/library.png",
-      "version": "0.6.21-preview",
-      "sha256": "fd32fb80fae477674887699a84f1263301b2a5b826369e9c449f592086314fcc",
-      "capture_source": "server:grouple-core-01/android-33/upgrade-gate"
+      "path": "assets/screenshots/0.6.22/downloads.png",
+      "version": "0.6.22-preview",
+      "sha256": "ab33237b447ca3ec52085629ebebb0602564710c05e8eebe255a939890bde21f",
+      "capture_evidence": "HOSTKEY Android 13 device gate · commit 4099585cf969241b22b2571ae0983c008425d646"
     },
     {
-      "path": "assets/screenshots/0.6.21/settings.png",
-      "version": "0.6.21-preview",
-      "sha256": "077009fcd05fc71c762aaf49a1a0caa576211b420dd396ba4b352af4a7291c11",
-      "capture_source": "server:grouple-core-01/android-33/upgrade-gate"
+      "path": "assets/screenshots/0.6.22/sync-totals.png",
+      "version": "0.6.22-preview",
+      "sha256": "cf3d65283fc0fdc649e464f704a4240ecbfdb256c932f755535bd532e5c2eab5",
+      "capture_evidence": "HOSTKEY Android 13 device gate · commit 4099585cf969241b22b2571ae0983c008425d646"
+    },
+    {
+      "path": "assets/screenshots/0.6.22/backup.png",
+      "version": "0.6.22-preview",
+      "sha256": "7b2150e244e6b681c34be31d2384b7319576d46bfa1ecf35f41bfa80e389d37f",
+      "capture_evidence": "HOSTKEY Android 13 device gate · commit 4099585cf969241b22b2571ae0983c008425d646"
+    },
+    {
+      "path": "assets/screenshots/0.6.22/recovery.png",
+      "version": "0.6.22-preview",
+      "sha256": "91451c15b30edf3bc9f30569394ac633f50bd377cb33a2c5b55b6c2eb5c51198",
+      "capture_evidence": "HOSTKEY Android 13 device gate · commit 4099585cf969241b22b2571ae0983c008425d646"
     }
   ]
 }
