@@ -12,6 +12,8 @@
 
 > **RU — основной язык · EN — обязательный второй язык**
 
+> **Compatibility channel / Канал совместимости:** канонический публичный репозиторий Skazka Hub теперь — `kroxaboom-sudo/skazka-hub-releases`. Этот legacy-репозиторий остаётся доступным для старых установок и их bootstrap/update fallback.
+
 ## RU
 
 **Skazka Hub 0.6.22-preview** — Android 13+ reader с local-first/offline-first библиотекой. Текущий публично поддерживаемый источник: **a.zazaza.me**.
@@ -55,7 +57,7 @@
 
 Библиотека, SQLite LocalState, история, прогресс, сохранённые описания/обложки и уже скачанный контент остаются доступны без постоянного соединения с сервером. Remote Runtime Pack принимается только при корректной подписи; при недоступности подписанного обновления приложение использует встроенную/последнюю доверенную конфигурацию вместо ослабления проверки.
 
-Встроенный updater 0.6.22 сначала проверяет будущий `skazka-hub-releases`, затем безопасно откатывается на `zaza-reader-releases`. Публичный release-repo пока сохраняет legacy-имя специально для старых установок; его переименование выполняется только после подтверждённого переходного релиза.
+Встроенный updater 0.6.22 сначала проверяет канонический `skazka-hub-releases`, затем безопасно откатывается на этот `zaza-reader-releases`. Post-release compatibility gate пройден: оба канала отдают один и тот же проверенный APK 0.6.22/28. Legacy-канал сохраняется для старых установок.
 
 ### Проверка релиза
 
@@ -94,7 +96,7 @@ Minimum version: **Android 13 / API 33**.
 
 Library data, SQLite LocalState, history, progress, saved metadata/artwork and downloaded content remain available without continuous server access. Remote Runtime Packs are accepted only with a valid signature; if a signed update is unavailable, the app keeps its embedded/last trusted configuration rather than weakening verification.
 
-The 0.6.22 updater tries the future `skazka-hub-releases` feed first and safely falls back to `zaza-reader-releases`. The public release repository intentionally keeps its legacy name until older installations have crossed the transition release.
+The 0.6.22 updater tries the canonical `skazka-hub-releases` feed first and safely falls back to this `zaza-reader-releases` channel. The post-release compatibility gate passed: both channels serve the same verified 0.6.22/28 APK. This legacy channel remains available for older installations.
 
 ### Release verification
 
@@ -102,4 +104,4 @@ The HOSTKEY release process verifies unit tests, Android 13 device gates, instal
 
 ---
 
-This public repository contains APK files, update metadata, release notes and verified screenshots. Android source is maintained separately in the private `kroxaboom-sudo/skazka-hub` repository. Signing keys are never published.
+This repository is the legacy compatibility release channel. The canonical public channel is `kroxaboom-sudo/skazka-hub-releases`. Android source is maintained separately in the private `kroxaboom-sudo/skazka-hub` repository. Signing keys are never published.
