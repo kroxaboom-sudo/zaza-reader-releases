@@ -1,33 +1,31 @@
-# Skazka Hub 0.6.21-preview
+# Skazka Hub 0.6.22-preview
 
-> **RU — основной язык · EN — обязательный второй язык**
-
-RU: Переходный выпуск Skazka Hub: новый публичный бренд, сохранённый путь обновления и более надёжная доставка служебных событий. Android 13+. EN: Transitional Skazka Hub release: new public brand, preserved upgrade path, and more reliable operational-event delivery. Android 13+.
+RU: крупное обновление local/offline-first библиотеки, загрузок IMAGE/TEXT/MIXED, читалки, резервного копирования и RU/EN. EN: major local/offline-first update for the library, IMAGE/TEXT/MIXED downloads, reader, backups, and RU/EN support.
 
 ## RU
 
-Переходный выпуск Skazka Hub: новый публичный бренд, сохранённый путь обновления и более надёжная доставка служебных событий. Для Android 13 и новее.
+- Downloads объединены для IMAGE и TEXT: персистентная очередь, пауза/продолжение/повтор/отмена, автоматические загрузки и локальная переиндексация.
+- SQLite LocalState стал локальным source of truth; Library v2 получила коллекции, unread/new, расширенные фильтры, list/grid, bulk actions, undo и сохранение позиции прокрутки.
+- Добавлены native TEXT и MIXED reading flows; IMAGE reader получил fit-screen, RTL и дополнительные режимы отображения.
+- Резервные копии расширены: зашифрованные локальные и HOSTKEY/Telegram-копии, полный архив скачанных глав и clean-install offline recovery.
+- Полностью проверены русский и английский интерфейсы; LOC-05 сохраняет стабильные ключи для удалённых исправлений переводов.
+- Updater подготовлен к миграции GitHub Releases: новый `skazka-hub-releases` является приоритетным feed, legacy `zaza-reader-releases` остаётся безопасным fallback до отдельного перехода.
+- Очередь телеметрии защищена от race при flush; повторяющаяся low-priority usage-телеметрия coalesce-ится без объединения error/source событий.
+- Vercel исключён из активных маршрутов и сохранён только как выключенный cold reserve.
+- Приватный source-repo переименован в `kroxaboom-sudo/skazka-hub`; `applicationId me.zaza.reader` намеренно сохранён для install-over совместимости.
 
-- Публичное имя приложения теперь **Skazka Hub**; legacy `applicationId` сохранён, поэтому обновление устанавливается поверх Zaza Reader 0.6.20 без удаления приложения.
-- Убрана пометка «тестовая версия» из стартового диалога; системное имя и уведомления используют Skazka Hub.
-- Переходный updater сохраняет совместимость с текущим legacy release endpoint и подготовлен к будущему переименованию репозитория релизов.
-- Повышена отказоустойчивость доставки диагностических и операционных событий Grouple: основной и резервные серверные маршруты работают независимо, а Telegram остаётся параллельным операционным каналом.
-- Серверный release-gate проверил unit/integration tests, подпись APK и обновление **0.6.20 → 0.6.21** на Android 13 с сохранением данных приложения.
-
-Минимальная версия: **Android 13 / API 33**. Обновление устанавливайте поверх существующей версии; удалять приложение не нужно.
-
-> Примечание: полное покрытие интерфейса RU/EN относится к следующему этапу работ. Это описание уже приведено к новому обязательному формату RU/EN и не заявляет невыпущенные функции как реализованные.
+Устанавливайте 0.6.22 поверх 0.6.21 — удалять приложение не нужно. Android 13+.
 
 ## EN
 
-This is a transitional Skazka Hub release: the new public brand is active, the existing upgrade path is preserved, and delivery of operational events is more resilient. Android 13 or newer is required.
+- IMAGE and TEXT downloads now share one persistent queue with pause/resume/retry/cancel, automatic downloads, and local reindexing.
+- SQLite LocalState is the local source of truth; Library v2 adds collections, unread/new, advanced filters, list/grid, bulk actions, undo, and scroll-position preservation.
+- Native TEXT and MIXED reading flows are included; the IMAGE reader adds fit-screen, RTL, and additional display modes.
+- Backup coverage now includes encrypted local and HOSTKEY/Telegram copies, full downloaded-content archives, and clean-install offline recovery.
+- Russian and English UI coverage is verified; LOC-05 keeps stable keys for remotely moderated translation fixes.
+- The updater is ready for the Releases migration: `skazka-hub-releases` is tried first, while legacy `zaza-reader-releases` remains a safe fallback until the separate cutover.
+- Telemetry flush races are fixed; repetitive low-priority usage events are coalesced without merging error/source events.
+- Vercel is removed from active routes and retained only as a disabled cold reserve.
+- The private source repository is now `kroxaboom-sudo/skazka-hub`; legacy `applicationId me.zaza.reader` is intentionally retained for install-over compatibility.
 
-- The public app name is now **Skazka Hub**. The legacy Android `applicationId` is preserved, so the update installs over Zaza Reader 0.6.20 without removing the app.
-- The startup “test version” label was removed; system-facing app naming and notifications use Skazka Hub.
-- The transitional updater remains compatible with the current legacy release endpoint and is prepared for the future release-repository rename.
-- Grouple operational and diagnostic event delivery is more resilient: primary and fallback server routes operate independently, while Telegram remains a parallel operations channel.
-- The server-side release gate verified unit/integration tests, APK signing and the **0.6.20 → 0.6.21** Android 13 upgrade while preserving app data.
-
-Minimum version: **Android 13 / API 33**. Install this update over the existing app; do not uninstall first.
-
-> Note: full RU/EN application UI coverage is part of the next development stage. This release description already follows the mandatory RU/EN documentation format without claiming unreleased features as implemented.
+Install 0.6.22 over 0.6.21; do not uninstall first. Android 13+.

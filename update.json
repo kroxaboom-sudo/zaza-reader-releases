@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "packageName": "me.zaza.reader",
-  "versionCode": 27,
-  "versionName": "0.6.21-preview",
+  "versionCode": 28,
+  "versionName": "0.6.22-preview",
   "minSdk": 33,
-  "size": 242636,
-  "sha256": "36fa7777ab9a4f3619616d8966eaf1dd712f78050ce72ecdfae72ac42d0303bf",
-  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.21-preview/SkazkaHub-0.6.21-preview.apk",
-  "notes": "RU: Переходный выпуск Skazka Hub: новый публичный бренд, сохранённый путь обновления и более надёжная доставка служебных событий. Android 13+. EN: Transitional Skazka Hub release: new public brand, preserved upgrade path, and more reliable operational-event delivery. Android 13+."
+  "size": 353247,
+  "sha256": "1e641f9fea13e1fadb2f6b4b1cd48f4a01ecb7259208dc6c25e1986e9e41c2ee",
+  "apkUrl": "https://github.com/kroxaboom-sudo/zaza-reader-releases/releases/download/v0.6.22-preview/SkazkaHub-0.6.22-preview.apk",
+  "notes": "RU: крупное обновление local/offline-first библиотеки, загрузок IMAGE/TEXT/MIXED, читалки, резервного копирования и RU/EN. EN: major local/offline-first update for the library, IMAGE/TEXT/MIXED downloads, reader, backups, and RU/EN support."
 }
